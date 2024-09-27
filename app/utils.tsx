@@ -54,13 +54,13 @@ export async function fetchJson(url: string, options?: object) {
   return await res.json();
 }
 
-function newAtom(v: any) {
+function newAtom(v: object) {
   return { v, l: [] };
 }
-function getAtom(a: { v: any }) {
+function getAtom(a: { v: object }) {
   return a.v;
 }
-function setAtom(a, b, c) {
+export function setAtom(a, b, c) {
   if (typeof b === "function") {
     a.v = b(a.v);
   } else if (typeof b === "object") {
@@ -81,7 +81,7 @@ export function useAtom(a) {
   }, [a]);
   return [v, (b, c) => setAtom(a, b, c)];
 }
-function onAtom(a, fn) {
+export function onAtom(a, fn) {
   const h = () => fn(a.v);
   a.l.push(h);
   return () => a.l.splice(a.l.indexOf(h), 1);

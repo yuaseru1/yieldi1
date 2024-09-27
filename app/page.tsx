@@ -12,7 +12,6 @@ import {
   atomBitcoinWallet,
   bitcoinBalance,
 } from "@/app/utils";
-import { hex } from "@scure/base";
 import * as btc from "@scure/btc-signer";
 import Grid from "@/app/grid";
 import Card from "@/app/card";
