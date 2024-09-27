@@ -8,9 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderColor: {
+        DEFAULT: "var(--border)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        foreground2: "#6D655D",
+        primary: "#A1FD59",
       },
     },
   },
