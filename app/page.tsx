@@ -22,7 +22,9 @@ import Input from "@/app/input";
 import Button from "@/app/button";
 
 export default function Home() {
-  const [bitcoinWallet] = useAtom(atomBitcoinWallet);
+  const [bitcoinWallet] = useAtom<null | { address: string }>(
+    atomBitcoinWallet,
+  );
   const [modal, setModal] = useState<undefined | { type: string }>();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);

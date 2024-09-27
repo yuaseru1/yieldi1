@@ -54,10 +54,10 @@ export async function fetchJson(url: string, options?: object) {
   return await res.json();
 }
 
-function newAtom(v: object) {
+function newAtom<V>(v: V) {
   return { v, l: [] };
 }
-function getAtom(a: { v: object }) {
+function getAtom<V>(a: { v: V }) {
   return a.v;
 }
 export function setAtom(a, b, c) {
@@ -72,10 +72,10 @@ export function setAtom(a, b, c) {
   }
   a.l.forEach((l) => l());
 }
-export function useAtom(a) {
-  const [v, setV] = useState(getAtom(a));
+export function useAtom<V>(a: { v: V }) {
+  const [v, setV] = useState(getAtom<V>(a));
   useEffect(() => {
-    const l = () => setV(getAtom(a));
+    const l = () => setV(getAtom<V>(a));
     a.l.push(l);
     return () => a.l.splice(a.l.indexOf(l), 1);
   }, [a]);
