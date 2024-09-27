@@ -7,7 +7,7 @@ export default function Button({
 }: {
   className?: string;
   title?: string;
-  disabled?: bool;
+  disabled?: boolean;
   onClick: () => void;
   children: React.ReactNode;
 }) {
